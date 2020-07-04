@@ -41,10 +41,14 @@ backgroundQueue.async {
    Swift is also kind and allows us to create our own queues, this can be useful when debugging your app to see which queue is executing your current tasks.
 
    When intialising a queue we can also set the QOS just like the default global queue above.
+ 
+   By default the two queues created below are a serial queue and are a FIFO queue, first in first out. Everything happens in the order of execution, bare in mind this can change when using the .async and .sync methods.
 */
 
 let myQueue = DispatchQueue(label: "Owen's Queue")
 let qosQueue = DispatchQueue(label: "Owen's Queue 2", qos: .userInitiated)
+
+let concurrentQueue = DispatchQueue(label: "Owen's Concurrent Queue", attributes: .concurrent)
 
 // ------------------------------------------------------------------------------------------
 print("-----------------------------------------------------------------------------")
